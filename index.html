@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz San Valentín ❤️</title>
+
+<!-- Fuente Glacial Indifference -->
+<link href="https://fonts.cdnfonts.com/css/glacial-indifference" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: #b44d72;
+    font-family: 'Glacial Indifference', sans-serif;
+    overflow: hidden;
+    text-align: center;
+}
+
+.container {
+    position: relative;
+    z-index: 2;
+    padding: 40px 20px;
+}
+
+img {
+    width: 80%;
+    max-width: 300px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    margin: 20px 0;
+}
+
+p {
+    color: black;
+    font-size: 20px;
+    line-height: 1.5;
+    max-width: 600px;
+    margin: auto;
+}
+
+button {
+    margin-top: 30px;
+    padding: 15px 30px;
+    font-size: 18px;
+    background: #ffb6c1;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+/* Corazones flotando */
+.heart {
+    position: absolute;
+    bottom: -20px;
+    color: pink;
+    font-size: 20px;
+    animation: float 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* Explosión */
+.explosion {
+    position: absolute;
+    font-size: 24px;
+    animation: explode 1.2s ease-out forwards;
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(var(--x), var(--y)) scale(1.5);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Música -->
+<audio autoplay loop>
+    <source src="cancion.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+    <img src="imagen.jpg" alt="Nosotros ❤️">
+
+    <p>
+        Amo cada minuto a tu lado y cada día es especial, pero este día te deseo un Feliz Día del Amor a ti que eres mi amor eterno y siempre estaré en todos los días demostrándote ese amor que te tengo.
+    </p>
+
+    <button onclick="explosion()">🎁 Botón sorpresa</button>
+</div>
+
+<script>
+// Corazones flotando
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (Math.random() * 3 + 4) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}, 400);
+
+// Explosión de corazones
+function explosion() {
+    for (let i = 0; i < 30; i++) {
+        const heart = document.createElement("div");
+        heart.classList.add("explosion");
+        heart.innerHTML = "❤️";
+        heart.style.left = "50%";
+        heart.style.top = "50%";
+        heart.style.setProperty("--x", (Math.random() * 400 - 200) + "px");
+        heart.style.setProperty("--y", (Math.random() * 400 - 200) + "px");
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1200);
+    }
+}
+</script>
+
+</body>
+</html>
